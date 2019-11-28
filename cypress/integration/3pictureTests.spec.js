@@ -2,7 +2,7 @@
 describe('Picture tests', function() {
 
 	beforeEach(function() {
-		cy.visit('/ps/v1/index.html')
+		cy.visit('/ps/v2/index.html')
 		cy.get('#input-username').type('user')
 		cy.get('#input-password').type('password')
 		cy.get('#album-login').click()
@@ -31,7 +31,9 @@ describe('Picture tests', function() {
 				var name = picnr.toString() + "."
 				cy.get("#view-full-image").should('have.attr', 'src').should('contain', name)
 				// after the check go to next img
-				cy.get("#view-full-next").click()
+				if (j < 9) {
+					cy.get("#view-full-next").click()
+				}
 				picnr++
 			}
 			// after checking all the pictures go to next page

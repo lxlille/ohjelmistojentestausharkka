@@ -2,7 +2,7 @@
 describe('Gallery tests', function() {
 
 	beforeEach(function() {
-		cy.visit('/ps/v1/index.html')
+		cy.visit('/ps/v2/index.html')
 		cy.get('#input-username').type('user')
 		cy.get('#input-password').type('password')
 		cy.get('#album-login').click()

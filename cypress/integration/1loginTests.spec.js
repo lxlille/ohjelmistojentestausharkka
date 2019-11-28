@@ -2,7 +2,7 @@
 describe('Login tests', function() {
 
 	beforeEach(function() {
-		cy.visit('/ps/v1/index.html')
+		cy.visit('/ps/v2/index.html')
 	})
 
 	it('Valid login', function() {
