@@ -1,0 +1,1890 @@
+{
+	"info": {
+		"_postman_id": "e255099d-4419-440d-83c0-0058e93dbceb",
+		"name": "TIE-21201 Testitapaukset, vaihe 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "2.2.2 Kuvien haku galleriaan REST API:ssa",
+			"item": [
+				{
+					"name": "Yhdeksän kuvan haku",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 9\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(9);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?max_results=9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "max_results",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tuhannen kuvan haku",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 49\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(49);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?max_results=1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "max_results",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Haku photo_id-arraylla",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 3\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(3);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?photo_id=0, 3, 4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "0, 3, 4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Haku ilman parametrejä",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 9 (oletus)\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(9);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ensimmäisen kuvan haku to-päivämäärällä",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 1\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?to=2018-06-01T12:00:01.000+0000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "to",
+									"value": "2018-06-01T12:00:01.000+0000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kuvien rajaaminen from-haulla",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 26\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(26);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?from=2018-06-23T13:00:00.000+0000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2018-06-23T13:00:00.000+0000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Haku kaiken sisältävillä päivämäärillä",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 49\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(49);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?from=2018-06-01T12:00:00.000+0000&to=2018-07-19T12:00:00.000+0000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2018-06-01T12:00:00.000+0000"
+								},
+								{
+									"key": "to",
+									"value": "2018-07-19T12:00:00.000+0000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Haku alkaen negatiivisesta indeksistä",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 7\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(7);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?max_results=12&start_item=-5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "max_results",
+									"value": "12"
+								},
+								{
+									"key": "start_item",
+									"value": "-5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2.2.3 Avainsanojen hakutoiminto REST API:ssa",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2.2.4 Avainsanojen lisääminen ja poistaminen REST API:ssa",
+			"item": [
+				{
+					"name": "Avainsanan lisääminen pienimpään kuvaan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200 tai 201\", function() {",
+									"    pm.response.to.have.status(200) || pm.response.to.have.status(201);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Kentät id, value\", function() {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id') && pm.expect(jsonData).to.have.property('value');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?keyword=moroooo&photo_id=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "moroooo"
+								},
+								{
+									"key": "photo_id",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Avainsanan lisääminen kuvaan 13",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200 tai 201\", function() {",
+									"    pm.response.to.have.status(200) || pm.response.to.have.status(201);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Kentät id, value\", function() {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id') && pm.expect(jsonData).to.have.property('value');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?keyword=moro&photo_id=13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "moro"
+								},
+								{
+									"key": "photo_id",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Avainsanan lisääminen suurimpaan kuvaan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200 tai 201\", function() {",
+									"    pm.response.to.have.status(200) || pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Kentät id, value\", function() {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id') && pm.expect(jsonData).to.have.property('value');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?keyword=jeepppp&photo_id=48",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "jeepppp"
+								},
+								{
+									"key": "photo_id",
+									"value": "48"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pienimmän kuvan avainsanojen haku",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200 tai 201\", function() {",
+									"    pm.response.to.have.status(200) || pm.response.to.have.status(201);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Kentät id, value\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(1);",
+									"    jsonData.forEach(function(item) {",
+									"        pm.expect(item).to.have.all.keys('id', 'value');",
+									"    });",
+									"});",
+									"",
+									"pm.test(\"Valitoidaan vastauksen pituus ja sisältö.\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].id).to.eql(0) && pm.expect(jsonData[0].value).to.eql('moro') && pm.expect(jsonData.length).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?photo_id=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kuvan 13 avainsanojen haku",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200 tai 201\", function() {",
+									"    pm.response.to.have.status(200) || pm.response.to.have.status(201);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Kentät id, value\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(1);",
+									"    jsonData.forEach(function(item) {",
+									"        pm.expect(item).to.have.all.keys('id', 'value');",
+									"    });",
+									"});",
+									"",
+									"pm.test(\"Valitoidaan vastauksen pituus ja sisältö.\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].id).to.eql(0) && pm.expect(jsonData[0].value).to.eql('moro') && pm.expect(jsonData.length).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?photo_id=13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Suurimman kuvan avainsanojen haku",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200 tai 201\", function() {",
+									"    pm.response.to.have.status(200) || pm.response.to.have.status(201);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Kentät id, value\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(1);",
+									"    jsonData.forEach(function(item) {",
+									"        pm.expect(item).to.have.all.keys('id', 'value');",
+									"    });",
+									"});",
+									"",
+									"pm.test(\"Valitoidaan vastauksen pituus ja sisältö.\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].id).to.eql(0) && pm.expect(jsonData[0].value).to.eql('moro') && pm.expect(jsonData.length).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?photo_id=48",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "48"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Avainsanan lisääminen kuvaan jota ei ole",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 400\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?keyword=moro&photo_id=50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "moro"
+								},
+								{
+									"key": "photo_id",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Avainsanan lisääminen negatiiviseen kuvaan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 400\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?keyword=moro&photo_id=-3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "moro"
+								},
+								{
+									"key": "photo_id",
+									"value": "-3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Olemassaolemattoman avainsanan poisto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 400\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?keyword_id=200",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "keyword_id",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Poistetaan negatiivinen avainsana",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 400\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?keyword_id=-2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "keyword_id",
+									"value": "-2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toisena lisätyn avainsanan poisto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200 tai 201\", function() {",
+									"    pm.response.to.have.status(200) || pm.response.to.have.status(201);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?keyword_id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "keyword_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ensimmäisenä lisätyn avainsanan poisto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200 tai 201\", function() {",
+									"    pm.response.to.have.status(200) || pm.response.to.have.status(201);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?keyword_id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "keyword_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kolmantena lisätyn avainsanan poisto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200 tai 201\", function() {",
+									"    pm.response.to.have.status(200) || pm.response.to.have.status(201);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/keywords?keyword_id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"keywords"
+							],
+							"query": [
+								{
+									"key": "keyword_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2.2.5 Kuvien haku katseltavaksi REST API:ssa",
+			"item": [
+				{
+					"name": "Ensimmäisen kuvan haku",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 1\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(1);",
+									"});",
+									"",
+									"pm.test(\"Saadun kuvan photo_id = 0\", function() {",
+									"    pm.expect(pm.response.json().at(0).id).to.eql(0);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?photo_id=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Viimeisen kuvan haku",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 1\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(1);",
+									"});",
+									"",
+									"pm.test(\"Saadun kuvan photo_id = 48\", function() {",
+									"    pm.expect(pm.response.json().at(0).id).to.eql(48);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?photo_id=48",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "48"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kuvan haku keskeltä",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 1\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(1);",
+									"});",
+									"",
+									"pm.test(\"Saadun kuvan photo_id = 18\", function() {",
+									"    pm.expect(pm.response.json().at(0).id).to.eql(18);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?photo_id=18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kuvan haku olemattomalla id:llä",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 0\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(0);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?photo_id=55",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "55"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kuvan haku negatiivisella id:llä",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Vastausten määrä = 0\", function() {",
+									"    pm.expect(Object.keys(pm.response.json()).length).to.eql(0);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?photo_id=-4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "-4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2.2.6 Rajapinnan suorituskyvyn testaaminen",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2.2.8 REST API:n tutkiva testaus",
+			"item": [
+				{
+					"name": "/photos",
+					"item": [
+						{
+							"name": "Ilman rajausta, väärä tunnus",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+										"exec": [
+											"pm.test(\"Vastaus 401\", function() {",
+											"    pm.response.to.have.status(401);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "password",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "karpo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ps/photos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ps",
+										"photos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Negatiivinen maksimirajaus",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+										"exec": [
+											"pm.test(\"Vastaus 400\", function() {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "password",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ps/photos?max_results=-1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ps",
+										"photos"
+									],
+									"query": [
+										{
+											"key": "max_results",
+											"value": "-1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "/keywords",
+					"item": [
+						{
+							"name": "Avainsanan lisääminen ilman parametrejä",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+										"exec": [
+											"pm.test(\"Vastaus 400\", function() {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "password",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ps/keywords",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ps",
+										"keywords"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2.2.9 Pahantahtoinen hyökkäys REST API:a kohden",
+			"item": [
+				{
+					"name": "Karkea SQL-injektioyritys",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7d15a78-0c38-448e-b61f-4502510bbb16",
+								"exec": [
+									"pm.test(\"Vastaus 400\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ps/photos?from=; select * from photos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ps",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "; select * from photos"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "password",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "user",
+				"type": "string"
+			}
+		]
+	},
+	"protocolProfileBehavior": {}
+}
